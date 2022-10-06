@@ -1,3 +1,4 @@
+
 name: day4-scm-common
 
 on:
@@ -21,7 +22,7 @@ env:
 
 jobs:
   build:
-    if: github.repository == 'azuredevcollege/trainingdays'
+    if: github.repository == 'user1-day4-org/trainingdays'
     runs-on: ubuntu-latest
     env:
       BICEP_FILE_PATH: "./day4/apps/infrastructure/bicep/common/commonmain.bicep"
@@ -45,13 +46,13 @@ jobs:
           retention-days: 30
 
   deploy-to-dev:
-    if: (github.repository == 'azuredevcollege/trainingdays') && ((github.event_name == 'push') || (github.event_name == 'workflow_dispatch'))
+    if: (github.repository == 'user1-day4-org/trainingdays') && ((github.event_name == 'push') || (github.event_name == 'workflow_dispatch'))
     runs-on: ubuntu-latest
     environment: day4-scm-dev
     needs: build
     env:
-      RESOURCE_GROUP_NAME: rg-scm-devday4
-      RESOURCE_GROUP_LOCATION: westeurope
+      RESOURCE_GROUP_NAME: user1-dev-rg
+      RESOURCE_GROUP_LOCATION: eastus
       ENV_NAME: devd4
 
     steps:
@@ -87,13 +88,13 @@ jobs:
           parameters: env=${{ env.ENV_NAME }}
 
   deploy-to-test:
-    if: (github.repository == 'azuredevcollege/trainingdays') && ((github.event_name == 'push') || (github.event_name == 'workflow_dispatch'))
+    if: (github.repository == 'user1-day4-org/trainingdays') && ((github.event_name == 'push') || (github.event_name == 'workflow_dispatch'))
     runs-on: ubuntu-latest
     environment: day4-scm-test
     needs: deploy-to-dev
     env:
-      RESOURCE_GROUP_NAME: rg-scm-testday4
-      RESOURCE_GROUP_LOCATION: westeurope
+      RESOURCE_GROUP_NAME: user1-test-rg
+      RESOURCE_GROUP_LOCATION: eastus
       ENV_NAME: testd4
 
     steps:
