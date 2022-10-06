@@ -27,7 +27,7 @@
           <v-card class="elevation-0" color="transparent">
             <v-card-actions class="justify-center">
               <a
-                href="https://github.com/azuredevcollege/trainingdays"
+                href="https://github.com/user1-day4-org/trainingdays"
                 target="_blank"
               >
                 <v-img

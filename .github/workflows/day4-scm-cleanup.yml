@@ -5,11 +5,11 @@ on:
 
 jobs:
   destroy:
-    if: github.repository == 'azuredevcollege/trainingdays'
+    if: github.repository == 'user1-day4-org/trainingdays'
     runs-on: ubuntu-latest
     env:
-      RG_DEV: rg-scm-devday4
-      RG_TEST: rg-scm-testday4
+      RG_DEV: user1-dev-rg
+      RG_TEST: user1-test-rg
 
     steps:
       - name: Inject slug/short variables
